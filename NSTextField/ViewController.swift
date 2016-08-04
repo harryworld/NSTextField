@@ -10,6 +10,12 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    @IBOutlet weak var textField: NSTextField! {
+        didSet {
+            textField.delegate = self
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,3 +31,26 @@ class ViewController: NSViewController {
 
 }
 
+extension ViewController: NSTextFieldDelegate {
+
+    func control(control: NSControl, textView: NSTextView, doCommandBySelector commandSelector: Selector) -> Bool {
+
+        if commandSelector == #selector(insertNewline(_:)) {
+            return false
+        }
+        return true
+    }
+
+    override func controlTextDidBeginEditing(obj: NSNotification) {
+        print("did begin")
+    }
+
+    override func controlTextDidChange(obj: NSNotification) {
+        print("did change")
+    }
+
+    override func controlTextDidEndEditing(obj: NSNotification) {
+        print("did end")
+    }
+
+}
