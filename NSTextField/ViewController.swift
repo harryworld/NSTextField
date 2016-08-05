@@ -33,7 +33,7 @@ class ViewController: NSViewController {
 
 extension ViewController: NSTextFieldDelegate {
 
-    func control(control: NSControl, textView: NSTextView, doCommandBySelector commandSelector: Selector) -> Bool {
+    func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
 
         if commandSelector == #selector(insertNewline(_:)) {
             return false
@@ -41,15 +41,15 @@ extension ViewController: NSTextFieldDelegate {
         return true
     }
 
-    override func controlTextDidBeginEditing(obj: NSNotification) {
+    override func controlTextDidBeginEditing(_ obj: Notification) {
         print("did begin")
     }
 
-    override func controlTextDidChange(obj: NSNotification) {
+    override func controlTextDidChange(_ obj: Notification) {
         print("did change")
     }
 
-    override func controlTextDidEndEditing(obj: NSNotification) {
+    override func controlTextDidEndEditing(_ obj: Notification) {
         print("did end")
     }
 
